@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Rain Probability</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="latitude" placeholder="Latitude" required="required" />
+      <input type="text" name="longitude" placeholder="Longitude" required="required" />
+      <input type="text" name="tempeture" placeholder="Tempeture (in F)" required="required" />
+      <input type="text" name="humidity" placeholder="Humidity" required="required" />
+      <input type="text" name="windspeed" placeholder="Wind Speed" required="required" />
+      <input type="text" name="sealevelpressure" placeholder="Pressure" required="required" />
+      <input type="text" name="cloudcover" placeholder="Cloud Cover" required="required" />
+      <input type="text" name="visibility" placeholder="Visibility" required="required" />
+      <input type="text" name="solarradiation" placeholder="Solar Radiation" required="required" />
+
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+ <img src="/static/images/Original.svg" style="width: 400px;position: absolute;bottom: 10px;left: 10px;" alt="Company Logo"/>
+
+</body>
+</html>
